@@ -18,7 +18,7 @@ const VAULT_ABI = [
 
 export default function HomePage() {
   const [showNetworks, setShowNetworks] = useState(false);
-  const { user, authenticated, logout } = usePrivy();
+  const { user, authenticated, login, logout } = usePrivy();
   const { wallets } = useWallets();
   const [activeTab, setActiveTab] = useState('assets');
   const [showSettings, setShowSettings] = useState(false);
@@ -54,6 +54,34 @@ export default function HomePage() {
     checkHeartbeat();
   }, [authenticated, currentWallet]);
 
+  // --- 1. PROTECTED LANDING PAGE (If not authenticated) ---
+  if (!authenticated) {
+    return (
+      <main className="min-h-screen bg-white flex flex-col items-center justify-center p-6 text-center">
+        <div className="w-20 h-20 bg-[#00A36C] rounded-[24px] flex items-center justify-center mb-8 shadow-xl shadow-[#00A36C]/20">
+          <ShieldCheck className="w-10 h-10 text-white" />
+        </div>
+        <h1 className="text-4xl font-black tracking-tighter text-gray-900 mb-4">
+          Lazarus Protocol
+        </h1>
+        <p className="text-gray-500 max-w-xs mb-10 text-sm leading-relaxed">
+          The ultimate digital inheritance vault on HashKey Chain. 
+          Secure your legacy with cryptographic proof-of-life.
+        </p>
+        <button 
+          onClick={login}
+          className="w-full max-w-xs py-4 bg-[#00A36C] text-white rounded-2xl font-bold text-lg hover:bg-[#008f5d] transition-all shadow-lg shadow-[#00A36C]/20 active:scale-95"
+        >
+          Enter Vault
+        </button>
+        <p className="mt-8 text-[10px] font-bold text-gray-300 uppercase tracking-widest">
+          Powered by HashKey Chain
+        </p>
+      </main>
+    );
+  }
+
+  // --- 2. MAIN DASHBOARD (If authenticated) ---
   return (
     <main className="min-h-screen bg-[#F9FAFB] text-[#1F2937] font-sans pb-24">
       {/* Header */}
