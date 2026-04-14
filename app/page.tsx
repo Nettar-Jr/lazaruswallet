@@ -58,15 +58,19 @@ export default function HomePage() {
   if (!authenticated) {
     return (
       <main className="min-h-screen bg-white flex flex-col items-center justify-center p-6 text-center">
-        <div className="w-20 h-20 bg-[#00A36C] rounded-[24px] flex items-center justify-center mb-8 shadow-xl shadow-[#00A36C]/20">
-          <ShieldCheck className="w-10 h-10 text-white" />
+        <div className="mb-0 flex justify-center">
+          <img 
+            src="/logo.png" 
+            alt="Lazarus Logo" 
+            className="w-75 h-auto drop-shadow-[0_0_15px_rgba(0,163,108,0.2)]"
+          />
         </div>
         <h1 className="text-4xl font-black tracking-tighter text-gray-900 mb-4">
           Lazarus Protocol
         </h1>
         <p className="text-gray-500 max-w-xs mb-10 text-sm leading-relaxed">
-          The ultimate digital inheritance vault on HashKey Chain. 
-          Secure your legacy with cryptographic proof-of-life.
+          Advanced protection for your digital assets. 
+          Ensure you never lose access, even if you lose your keys or device.
         </p>
         <button 
           onClick={login}
@@ -87,8 +91,12 @@ export default function HomePage() {
       {/* Header */}
 
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 p-4 flex justify-between items-center">
-        <div className="w-10 flex items-center">
-          <div className={`w-2 h-2 rounded-full ${isPoking ? 'bg-amber-400 animate-pulse' : 'bg-[#00A36C]'}`}></div>
+        <div className="w-30 flex items-center">
+          <img 
+            src="/logo.png" 
+            alt="Lazarus Logo" 
+            className="w-auto h-auto drop-shadow-[0_0_15px_rgba(0,163,108,0.2)]"
+          />
         </div>
 
         {/* NETWORK SELECTOR (Clickable) */}
